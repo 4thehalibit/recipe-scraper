@@ -1,0 +1,32 @@
+name: Weekly Recipe Scraper
+
+on:
+  schedule:
+    - cron: '0 13 * * 1'  # Mondays at 8 AM Central (13:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python scraper.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "Recipe Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add weekly_recipes.md
+          git commit -m "Weekly recipe update" || echo "No changes to commit"
+          git push
