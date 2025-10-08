@@ -4,14 +4,29 @@ from bs4 import BeautifulSoup
 from datetime import date
 
 def load_sites():
-    """Load site URLs from sites.txt"""
     with open("sites.txt", "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
-def scrape_recipes(sites):
-    """Scrape all recipe titles and links from each site"""
-    recipes = []
+def get_tags(recipe_url):
+    """Try to extract tags from a recipe page"""
+    try:
+        r = requests.get(recipe_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=10)
+        r.raise_for_status()
+    except Exception:
+        return []
+    
+    soup = BeautifulSoup(r.text, "html.parser")
+    tags = []
 
+    # AllRecipes usually has tags in <a> elements with "taxonomy-term" or "link" class
+    for tag in soup.select("a[class*='taxonomy'] , a[class*='link']"):
+        t = tag.get_text(strip=True)
+        if len(t) > 2 and t.lower() not in ("home", "recipes", "login", "sign up"):
+            tags.append(t)
+    return list(set(tags))[:5]  # limit to 5 tags
+
+def scrape_recipes(sites):
+    recipes = []
     for site in sites:
         print(f"Scraping: {site}")
         try:
@@ -28,8 +43,9 @@ def scrape_recipes(sites):
             href = link.get("href")
 
             if title and href and href.startswith("http"):
-                recipes.append(f"- [{title}]({href})")
-
+                tags = get_tags(href)
+                tag_text = f"  - Tags: {', '.join(tags)}" if tags else ""
+                recipes.append(f"- [{title}]({href})\n{tag_text}\n")
     return recipes
 
 if __name__ == "__main__":
@@ -38,6 +54,7 @@ if __name__ == "__main__":
 
     with open("weekly_recipes.md", "a", encoding="utf-8") as f:
         f.write(f"\n\n## Week of {date.today():%B %d, %Y}\n\n")
-        f.write("_Automatically updated every Monday_\n\n")
-        for recipe in recipes[:30]:  # limit to 30 results
-            f.write(recipe
+        for recipe in recipes[:25]:
+            f.write(recipe + "\n")
+
+    print("✅ Weekly recipes updated successfully.")
