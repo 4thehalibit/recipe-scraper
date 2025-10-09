@@ -98,6 +98,8 @@ def main():
     # Insert before </ul>
     updated_content = re.sub(r"</ul>", "\n".join(new_blocks) + "\n</ul>", existing, count=1)
 
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(updated_content)
 
