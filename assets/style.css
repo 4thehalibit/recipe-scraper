@@ -1,15 +1,14 @@
 /* ---------------------------------------------------
- 🍳 Recipe Scraper — Clean Modern Theme
- Works perfectly with GitHub Pages Markdown rendering
+ 🍳 Recipe Scraper — Final CSS (Usable, Polished Layout)
 --------------------------------------------------- */
 
-/* 🌤 Base Layout */
+/* 🧱 Base Layout */
 body {
   font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 1.5rem 3rem;
-  line-height: 1.8;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem 3rem;
+  line-height: 1.7;
   background: #fdfaf7;
   color: #2a1e12;
 }
@@ -19,14 +18,14 @@ body {
   background: linear-gradient(135deg, #ffb774, #ffcc94);
   color: #4b2600;
   border-radius: 14px;
-  padding: 1.5rem 1.8rem;
+  padding: 1.2rem 1.8rem;
   margin-bottom: 2.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
 .header .title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   text-decoration: none;
   color: inherit;
@@ -34,7 +33,7 @@ body {
 
 .header .subtitle {
   display: block;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-style: italic;
   margin-top: 0.3rem;
   color: #5c3b1b;
@@ -58,56 +57,72 @@ h2 {
   font-size: 1.4rem;
   border-bottom: 2px solid #ffd5b2;
   padding-bottom: 0.3em;
+  text-align: center;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   text-align: center;
   color: #bf4800;
+  margin-bottom: 0.4rem;
 }
 
-/* 🧩 Recipe Card Container */
+/* 📦 Recipe Grid Layout */
 ul {
   list-style: none;
   padding-left: 0;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   ul {
-    grid-template-columns: repeat(2, 1fr); /* Two columns on desktop */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+@media (min-width: 950px) {
+  ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 🧁 Recipe Card */
 ul li {
   background: #fff5ec;
   border: 1px solid #ffddba;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.8rem 0.8rem 1.2rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   transition: transform 0.15s ease, box-shadow 0.25s ease;
+  text-align: center;
 }
 
 ul li:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* 🖼 Recipe Images */
 img {
   display: block !important;
-  max-width: 200px !important;   /* 👈 consistent small size */
-  height: auto !important;
+  max-width: 120px !important;      /* ✅ true thumbnail size */
+  height: 120px !important;
   object-fit: cover !important;
   border-radius: 10px;
-  margin: 0.75rem auto 1rem !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin: 0.5rem auto 0.8rem !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-/* 📎 Links */
+img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔗 Links */
 a {
   color: #d35400;
   text-decoration: none;
@@ -121,7 +136,7 @@ a:hover {
 
 /* 🧠 Text Elements */
 p {
-  margin: 1rem 0;
+  margin: 0.6rem 0 0.8rem;
 }
 
 code {
@@ -131,6 +146,7 @@ code {
   border-radius: 4px;
 }
 
+/* 🧾 Footer */
 footer {
   text-align: center;
   margin-top: 3rem;
