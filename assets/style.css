@@ -1,0 +1,83 @@
+/* --- Recipe Scraper Theme --- */
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  max-width: 850px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+  line-height: 1.8;
+  background-color: #fffdfa;
+  color: #222;
+}
+
+h1, h2, h3 {
+  color: #d35400;
+  border-bottom: 2px solid #f5cba7;
+  padding-bottom: 0.3em;
+  margin-top: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+a {
+  color: #0070c9;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #005499;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  margin: 0.75rem 0 1.5rem;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #f0e4d7;
+  margin: 2.5rem 0;
+}
+
+ul {
+  list-style-type: "🍽️ ";
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+code {
+  background: #f7f3ef;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  a { color: #ffb84d; }
+  h1, h2, h3 {
+    color: #ffb366;
+    border-bottom-color: #774400;
+  }
+
+  hr { background: #2c2c2c; }
+  code { background: #1e1e1e; color: #ffcc80; }
+}
