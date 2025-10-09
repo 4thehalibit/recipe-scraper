@@ -1,66 +1,90 @@
 import re
 from pathlib import Path
 
-# Paths
-weekly_file = Path("recipes/weekly_recipes.md")
-my_file = Path("recipes/my_recipes.md")
-index_file = Path("index.md")
+WEEKLY = Path("recipes/weekly_recipes.md")
+MINE   = Path("recipes/my_recipes.md")
+INDEX  = Path("index.md")
 
-def extract_links(file: Path):
-    """Extracts recipe titles and URLs from either HTML or Markdown list items."""
-    if not file.exists():
+def extract_links_from_html(content: str):
+    """Find <li>…<h3>Title</h3>…<a href="URL">…</a>…</li> blocks."""
+    pairs = []
+    # One <li> card: grab title from <h3> and URL from the first anchor inside the card
+    for li in re.findall(r"<li>.*?</li>", content, flags=re.DOTALL | re.IGNORECASE):
+        h3 = re.search(r"<h3>(.*?)</h3>", li, flags=re.DOTALL | re.IGNORECASE)
+        a  = re.search(r'<a\s+href="([^"]+)"[^>]*>.*?</a>', li, flags=re.DOTALL | re.IGNORECASE)
+        if h3 and a:
+            title = re.sub(r"\s+", " ", h3.group(1)).strip()
+            url   = a.group(1).strip()
+            pairs.append((title, url))
+    return pairs
+
+def extract_links_from_md(content: str):
+    """Find - [Title](URL) markdown links (fallback)."""
+    return [(t.strip(), u.strip()) for t, u in re.findall(r"- \[(.*?)\]\((.*?)\)", content)]
+
+def read_links(path: Path):
+    if not path.exists():
         return []
-    content = file.read_text(encoding="utf-8")
-
-    # Match both HTML and Markdown-style links
-    html_links = re.findall(r'<a href="(.*?)">(.*?)</a>', content)
-    md_links = re.findall(r"- \[(.*?)\]\((.*?)\)", content)
-
-    # Normalize as (title, url)
-    links = [(title.strip(), url.strip()) for url, title in html_links]
-    links += [(title.strip(), url.strip()) for title, url in md_links]
-
+    text = path.read_text(encoding="utf-8")
+    links = extract_links_from_html(text)
+    # Also include any markdown-style links if present
+    links += extract_links_from_md(text)
     return links
 
-# Gather all links
-weekly_links = extract_links(weekly_file)
-my_links = extract_links(my_file)
+def build_recent_list(max_items=3):
+    weekly_links = read_links(WEEKLY)
+    my_links     = read_links(MINE)
 
-# Combine and deduplicate
-all_links = weekly_links + my_links
-seen = set()
-unique_links = []
-for title, url in all_links:
-    if url not in seen:
-        unique_links.append((title, url))
-        seen.add(url)
+    # Combine in the order they appear in files (older first).
+    combined = weekly_links + my_links
 
-# Take up to 3 latest
-latest = unique_links[:3]
+    # Take the most recent UNIQUE by URL (last occurrence wins), then keep last N
+    seen = set()
+    recent = []
+    for title, url in reversed(combined):
+        if url not in seen:
+            recent.append((title, url))
+            seen.add(url)
+        if len(recent) >= max_items:
+            break
+    recent.reverse()
+    return recent
 
-if not latest:
-    print("⚠️ No recipes found in either file.")
-    exit(0)
+def update_index(latest):
+    if not INDEX.exists():
+        print("⚠️ index.md not found.")
+        return
+    idx = INDEX.read_text(encoding="utf-8")
 
-# Build HTML output
-recent_html = "\n".join(
-    [f'- <a href="{url}" target="_blank">{title}</a>' for title, url in latest]
-)
-replacement = f"""
-## 🆕 Recently Added
+    # Build replacement block (HTML links for consistency)
+    recent_html = "\n".join([f'- <a href="{u}" target="_blank">{t}</a>' for t, u in latest])
+    new_block = f"## 🆕 Recently Added\n\n{recent_html}\n"
 
-{recent_html}
-"""
+    # First try: replace an existing Recently Added section (between header and next header or EOF)
+    pattern = r"## 🆕 Recently Added[\s\S]*?(?=\n## |\Z)"
+    if re.search(pattern, idx):
+        idx = re.sub(pattern, new_block, idx)
+    else:
+        # Try to replace a placeholder div (if you had one)
+        placeholder = r'<div id="recent-recipes">[\s\S]*?</div>'
+        if re.search(placeholder, idx):
+            idx = re.sub(placeholder, f"\n{new_block}\n", idx)
+        else:
+            # Fallback: append the section before the footer or at the end
+            if "</footer>" in idx:
+                idx = idx.replace("</footer>", f"\n{new_block}\n</footer>")
+            else:
+                idx = idx.rstrip() + "\n\n" + new_block + "\n"
 
-# Update index.md
-index_content = index_file.read_text(encoding="utf-8")
+    INDEX.write_text(idx, encoding="utf-8")
+    print(f"✅ Recently Added updated with {len(latest)} item(s).")
 
-new_content = re.sub(
-    r"## 🆕 Recently Added[\s\S]*?(?=\Z|## )",
-    replacement.strip(),
-    index_content,
-)
+def main():
+    latest = build_recent_list(max_items=3)
+    if not latest:
+        print("ℹ️ No recipes found in weekly or personal lists. Skipping.")
+        return
+    update_index(latest)
 
-index_file.write_text(new_content, encoding="utf-8")
-
-print(f"✅ Recently Added updated with {len(latest)} recipe(s).")
+if __name__ == "__main__":
+    main()
