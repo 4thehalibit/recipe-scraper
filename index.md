@@ -1,9 +1,37 @@
-# 🍳 Easy Recipes for 2–3 People
+<link rel="stylesheet" href="./assets/style.css">
 
-- [Easy Shrimp Dinner](https://www.allrecipes.com/recipe/20450/easy-shrimp-dinner/)
-- [Quick and Easy Stuffed Peppers](https://www.allrecipes.com/recipe/14044/quick-and-easy-stuffed-peppers/)
-- [Easy Chicken with Mushrooms and Zucchini in Cream Sauce](https://www.allrecipes.com/recipe/260466/easy-chicken-with-mushrooms-and-zucchini-in-cream-sauce/)
-- [Easy Pork Chops for the Slow Cooker](https://www.allrecipes.com/recipe/237411/easy-pork-chops-for-the-slow-cooker/)
-- [Autumn Rainbow Sheet Pan Dinner](https://www.allrecipes.com/recipe/261188/autumn-rainbow-sheet-pan-dinner/)
-- [Easy Chinese Corn Soup](https://www.allrecipes.com/recipe/29704/easy-chinese-corn-soup/)
-- [Easy One-Pan Pork and Squash Dinner](https://www.allrecipes.com/recipe/261598/easy-one-pan-pork-and-squash-dinner/)
+# 🍳 My Recipe Collection
+
+Welcome to my personal recipe book — a mix of automatically scraped dinner ideas and my own favorite dishes.  
+Everything here updates automatically every Monday. 🕒  
+
+---
+
+## 📚 Sections
+
+### 🥘 [Weekly Recipes](./recipes/weekly_recipes.md)
+Easy dinners for 2–3 people, scraped from trusted sources and updated weekly.
+
+### 👨‍🍳 [My Recipes](./recipes/my_recipes.md)
+My personal favorites and saved recipes — imported automatically whenever I add new links.
+
+---
+
+## 🧭 How It Works
+This project uses GitHub Actions to:
+- Scrape new dinner recipes every Monday morning.  
+- Add my own recipe links from [`data/my_recipe_links.txt`](./data/my_recipe_links.txt).  
+- Automatically publish this site via GitHub Pages.
+
+---
+
+## 🧠 Credits
+Built with:
+- **Python + BeautifulSoup** for scraping  
+- **GitHub Actions** for automation  
+- **Markdown + CSS** for a clean, readable design  
+
+---
+
+💡 Want to explore?  
+Start with your **[Weekly Recipes](./recipes/weekly_recipes.md)** or **[My Recipes](./recipes/my_recipes.md)** now!
