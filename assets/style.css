@@ -207,3 +207,36 @@ img[alt*="Peppers"] {
   background: #ff6600;
   transform: translateY(-1px);
 }
+
+
+/* Home Grid */
+.home-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.home-card {
+  background: linear-gradient(135deg, #ff9933, #cc6600);
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-decoration: none;
+  flex: 1 1 280px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.home-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.home-card h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
