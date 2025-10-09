@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../assets/style.css">
+
 # 🍳 Easy Recipes for 2–3 People
 
 _Automatically updated every Monday_
