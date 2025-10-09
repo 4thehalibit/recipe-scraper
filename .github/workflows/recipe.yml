@@ -1,50 +1,49 @@
-name: Recipe Automation
+name: 🥘 Weekly Recipe Scraper
 
 on:
-  # 🕒 Runs every Monday at 8 AM Central (13:00 UTC)
   schedule:
-    - cron: "0 13 * * 1"
-
-  # ⚡ Runs automatically when personal recipe links are updated
-  push:
-    paths:
-      - "data/my_recipe_links.txt"
-
-  # 🧠 Allows manual "Run workflow" button
-  workflow_dispatch:
+    - cron: "0 12 * * 1"  # Every Monday at 12:00 UTC
+  workflow_dispatch:      # Allow manual runs
 
 jobs:
-  update-recipes:
-    name: Update Recipes
+  scrape:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout repository
+      - name: 📦 Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
+      - name: 📚 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
 
-      # 🍳 Auto-import personal links before scraping
-      - name: Import personal recipe links
-        run: python scripts/add_my_recipe.py
-
-      # 🍝 Scrape 5 new easy dinner recipes
-      - name: Run weekly dinner scraper
+      - name: 🧠 Run scraper
         run: python scripts/scraper.py
 
-      # 🧾 Commit and push any updates
-      - name: Commit and push changes
+      - name: 🕵️ Check for changes
+        id: git_diff
         run: |
           git config user.name "Recipe Bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add recipes/ data/my_recipe_links.txt || true
-          git commit -m "🍳 Auto update recipes" || echo "No changes to commit"
+          git config user.email "actions@github.com"
+          git add recipes/weekly_recipes.md
+          git diff --cached --quiet || echo "changed=true" >> $GITHUB_ENV
+
+      - name: 🧾 Generate commit message
+        if: env.changed == 'true'
+        id: build_message
+        run: |
+          ADDED=$(grep -o "<h3>" recipes/weekly_recipes.md | wc -l)
+          DATE=$(date +"%b %d, %Y")
+          echo "commit_msg=🍳 Weekly update — $ADDED recipes total ($DATE)" >> $GITHUB_ENV
+
+      - name: 💾 Commit and push changes
+        if: env.changed == 'true'
+        run: |
+          git commit -m "${{ env.commit_msg }}"
           git push
