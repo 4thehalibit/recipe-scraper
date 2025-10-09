@@ -1,0 +1,43 @@
+name: 👨‍🍳 My Recipes Import
+
+on:
+  push:
+    paths:
+      - "data/my_recipe_links.txt"   # Trigger when you add new links
+  workflow_dispatch:                 # Allow manual runs
+
+jobs:
+  import_my_recipes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📚 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: 👨‍🍳 Import My Recipes
+        run: python scripts/add_my_recipe.py
+
+      - name: 🕵️ Check for changes
+        id: git_diff
+        run: |
+          git config user.name "Recipe Bot"
+          git config user.email "actions@github.com"
+          git add recipes/my_recipes.md
+          git diff --cached --quiet || echo "changed=true" >> $GITHUB_ENV
+
+      - name: 🧾 Commit changes
+        if: env.changed == 'true'
+        run: |
+          DATE=$(date +"%b %d, %Y")
+          git commit -m "👨‍🍳 Imported personal recipes ($DATE)"
+          git push
