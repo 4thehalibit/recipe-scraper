@@ -2,7 +2,7 @@
 
 <div class="header">
   <a href="./index.md" class="title">🍴 Recipe Scraper</a>
-  <span class="subtitle">Easy Meals for 2–3 People</span>
+  <span class="subtitle">Easy, Cozy Meals for 2–3 People</span>
 </div>
 
 
@@ -44,3 +44,10 @@ Built with:
 
 💡 Want to explore?  
 Start with your **[Weekly Recipes](./recipes/weekly_recipes.md)** or **[My Recipes](./recipes/my_recipes.md)** now!
+
+---
+
+<footer>
+  Made with ❤️ using Python, BeautifulSoup & GitHub Pages  
+  <br>© 2025 Vincent Westberg
+</footer>

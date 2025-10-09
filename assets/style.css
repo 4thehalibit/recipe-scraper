@@ -1,130 +1,154 @@
-/* --- Header Banner --- */
+/* --- 🍳 Modern Recipe Scraper Theme --- */
+
+/* Base Layout */
+body {
+  font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
+  max-width: 880px;
+  margin: 3rem auto;
+  padding: 0 1.5rem 3rem;
+  line-height: 1.8;
+  background: #fdfaf7;
+  color: #2a1e12;
+}
+
+/* Header Banner */
 .header {
-  background: linear-gradient(90deg, #f6c18b, #fce2c0);
+  background: linear-gradient(135deg, #ffb774, #ffcc94);
   color: #4b2600;
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  border-radius: 14px;
+  padding: 1.5rem 1.8rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header .title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
-  color: #4b2600;
-}
-
-.header .title:hover {
-  text-decoration: underline;
+  color: inherit;
 }
 
 .header .subtitle {
-  font-size: 0.95rem;
+  display: block;
+  font-size: 1rem;
   font-style: italic;
-  color: #5e3200;
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
+  color: #5c3b1b;
 }
 
-@media (prefers-color-scheme: dark) {
-  .header {
-    background: linear-gradient(90deg, #3a2c15, #5a4020);
-    color: #ffe2c4;
-  }
-
-  .header .title {
-    color: #ffe2c4;
-  }
-
-  .header .subtitle {
-    color: #ffcc80;
-  }
-}
-
-
-/* --- Recipe Scraper Theme --- */
-
-body {
-  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-  max-width: 850px;
-  margin: 2.5rem auto;
-  padding: 0 1.5rem;
-  line-height: 1.8;
-  background-color: #fffdfa;
-  color: #222;
-}
-
+/* Typography */
 h1, h2, h3 {
   color: #d35400;
-  border-bottom: 2px solid #f5cba7;
-  padding-bottom: 0.3em;
-  margin-top: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  border: none;
 }
 
 h1 {
   font-size: 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.4rem;
+  border-bottom: 2px solid #ffd5b2;
+  padding-bottom: 0.3em;
 }
 
 a {
-  color: #0070c9;
+  color: #d35400;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
+  color: #a94400;
   text-decoration: underline;
-  color: #005499;
 }
 
+/* Recipe Cards */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #fff5ec;
+  border: 1px solid #ffddba;
+  border-radius: 10px;
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+ul li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Paragraphs */
+p {
+  margin: 1.2rem 0;
+}
+
+/* Images */
 img {
-  display: block;
   max-width: 100%;
   border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   margin: 0.75rem 0 1.5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-hr {
-  border: 0;
-  height: 1px;
-  background: #f0e4d7;
-  margin: 2.5rem 0;
-}
-
-ul {
-  list-style-type: "🍽️ ";
-  padding-left: 1.5rem;
-}
-
-li {
-  margin-bottom: 0.4rem;
-}
-
-p {
-  margin: 1rem 0;
-}
-
+/* Code Snippets */
 code {
-  background: #f7f3ef;
-  padding: 2px 5px;
+  background: #fff2e6;
+  color: #a63e00;
+  padding: 2px 6px;
   border-radius: 4px;
 }
 
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #121212;
-    color: #e0e0e0;
+    background: #12100f;
+    color: #f0e0d0;
   }
 
-  a { color: #ffb84d; }
+  .header {
+    background: linear-gradient(135deg, #704000, #b96b15);
+    color: #fff0d0;
+  }
+
+  .header .subtitle {
+    color: #ffe0b0;
+  }
+
   h1, h2, h3 {
     color: #ffb366;
-    border-bottom-color: #774400;
   }
 
-  hr { background: #2c2c2c; }
-  code { background: #1e1e1e; color: #ffcc80; }
+  ul li {
+    background: #1e1a17;
+    border: 1px solid #3a2c20;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  }
+
+  a {
+    color: #ffb84d;
+  }
+
+  code {
+    background: #2a211c;
+    color: #ffd8a6;
+  }
 }
