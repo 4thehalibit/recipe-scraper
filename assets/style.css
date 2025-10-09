@@ -179,3 +179,31 @@ img[alt*="Peppers"] {
   background-position: center;
   color: transparent; /* hides alt text */
 }
+/* Navigation Bar */
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0 2rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+  display: inline-block;
+  background: #ff8844;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #ff6600;
+  transform: translateY(-1px);
+}

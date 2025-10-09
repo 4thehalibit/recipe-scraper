@@ -9,6 +9,12 @@ FALLBACK_IMG = "assets/fallback.png"
 
 HEADER = """<link rel="stylesheet" href="../assets/style.css?v=3">
 
+<div class="nav">
+  <a href="../index.md" class="nav-btn">🏠 Home</a>
+  <a href="../recipes/weekly_recipes.md" class="nav-btn">🥘 Weekly Recipes</a>
+  <a href="../recipes/my_recipes.md" class="nav-btn">👨‍🍳 My Recipes</a>
+</div>
+
 <div class="header">
   <a href="../index.md" class="title">🍴 Recipe Scraper</a>
   <span class="subtitle">My Saved Favorites</span>
@@ -21,6 +27,7 @@ Each time I paste links into `data/my_recipe_links.txt`, this list updates autom
 
 ---
 """
+
 
 def extract_tags(soup):
     tags = set()
