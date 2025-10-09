@@ -1,3 +1,50 @@
+/* --- Header Banner --- */
+.header {
+  background: linear-gradient(90deg, #f6c18b, #fce2c0);
+  color: #4b2600;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.header .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #4b2600;
+}
+
+.header .title:hover {
+  text-decoration: underline;
+}
+
+.header .subtitle {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #5e3200;
+  margin-top: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: linear-gradient(90deg, #3a2c15, #5a4020);
+    color: #ffe2c4;
+  }
+
+  .header .title {
+    color: #ffe2c4;
+  }
+
+  .header .subtitle {
+    color: #ffcc80;
+  }
+}
+
+
 /* --- Recipe Scraper Theme --- */
 
 body {

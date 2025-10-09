@@ -1,5 +1,13 @@
 <link rel="stylesheet" href="../assets/style.css">
 
+<div class="header">
+  <a href="../index.md" class="title">🍴 Recipe Scraper</a>
+  <span class="subtitle">Easy Meals for 2–3 People</span>
+</div>
+
+
+<link rel="stylesheet" href="../assets/style.css">
+
 # 🍳 Easy Recipes for 2–3 People
 
 _Automatically updated every Monday_

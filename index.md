@@ -1,5 +1,14 @@
 <link rel="stylesheet" href="./assets/style.css">
 
+<div class="header">
+  <a href="./index.md" class="title">🍴 Recipe Scraper</a>
+  <span class="subtitle">Easy Meals for 2–3 People</span>
+</div>
+
+
+<link rel="stylesheet" href="./assets/style.css">
+
+
 # 🍳 My Recipe Collection
 
 Welcome to my personal recipe book — a mix of automatically scraped dinner ideas and my own favorite dishes.  
