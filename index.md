@@ -27,12 +27,14 @@ Everything here updates automatically every Monday. 🕒
   </a>
 </div>
 
+---
 
-### 🥘 [Weekly Recipes](recipes/weekly_recipes.md)
-Easy dinners for 2–3 people, scraped from trusted sources and updated weekly.
+## 🆕 Recently Added
 
-### 👨‍🍳 [My Recipes](recipes/my_recipes.md)
-My personal favorites and saved recipes — imported automatically whenever I add new links.
+<div id="recent-recipes">
+  <p><em>Loading latest recipes...</em></p>
+</div>
+
 
 ---
 

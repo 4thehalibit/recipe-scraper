@@ -33,6 +33,10 @@ jobs:
       - name: 🧹 Run layout fixer
         run: python scripts/fix_recipe_layouts.py
 
+      - name: 🆕 Update Recently Added on homepage
+        run: python scripts/update_recent_recipes.py
+
+
       - name: 🕵️ Detect changes
         id: detect
         run: |
