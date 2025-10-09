@@ -160,3 +160,22 @@ footer {
     color: #a38d7c;
   }
 }
+
+/* 🧁 Fallback Image Style */
+img {
+  background-color: #2a1e12;
+  color: #fff2e6;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 100px;
+}
+
+img[alt*="Easy"], 
+img[alt*="Dinner"], 
+img[alt*="Recipe"], 
+img[alt*="Peppers"] {
+  background-image: url("https://raw.githubusercontent.com/4thehalibit/recipe-scraper/main/assets/fallback.png");
+  background-size: cover;
+  background-position: center;
+  color: transparent; /* hides alt text */
+}
