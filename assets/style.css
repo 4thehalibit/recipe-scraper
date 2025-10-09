@@ -1,9 +1,12 @@
-/* --- 🍳 Modern Recipe Scraper Theme (Card Layout) --- */
+/* ---------------------------------------------------
+ 🍳 Recipe Scraper — Clean Modern Theme
+ Works perfectly with GitHub Pages Markdown rendering
+--------------------------------------------------- */
 
-/* Base Layout */
+/* 🌤 Base Layout */
 body {
   font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
-  max-width: 880px;
+  max-width: 900px;
   margin: 3rem auto;
   padding: 0 1.5rem 3rem;
   line-height: 1.8;
@@ -11,7 +14,7 @@ body {
   color: #2a1e12;
 }
 
-/* Header Banner */
+/* 🌅 Header Banner */
 .header {
   background: linear-gradient(135deg, #ffb774, #ffcc94);
   color: #4b2600;
@@ -37,7 +40,7 @@ body {
   color: #5c3b1b;
 }
 
-/* Typography */
+/* 🧾 Headings */
 h1, h2, h3 {
   color: #d35400;
   font-weight: 700;
@@ -57,51 +60,54 @@ h2 {
   padding-bottom: 0.3em;
 }
 
-/* --- Recipe Card Styling --- */
 h3 {
   font-size: 1.2rem;
-  margin-top: 0;
-  margin-bottom: 0.75rem;
   text-align: center;
   color: #bf4800;
 }
 
-/* Every recipe block = auto card */
-h3 + img {
-  display: block;
-  max-width: 260px;
-  width: 90%;
-  height: auto;
-  object-fit: cover;
-  margin: 0 auto 0.8rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+/* 🧩 Recipe Card Container */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
-h3, h3 + img, h3 + img + ul, h3 + img + p {
-  transition: all 0.3s ease;
+@media (min-width: 768px) {
+  ul {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on desktop */
+  }
 }
 
-/* Recipe Card Container */
-h3 {
-  position: relative;
-}
-
-h3::before {
-  content: "";
-  display: block;
+ul li {
   background: #fff5ec;
-  border-radius: 10px;
-  position: absolute;
-  top: -0.8rem;
-  left: -1rem;
-  right: -1rem;
-  bottom: -1rem;
-  z-index: -1;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ffddba;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.25s ease;
 }
 
-/* Links inside cards */
+ul li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 🖼 Recipe Images */
+img {
+  display: block !important;
+  max-width: 200px !important;   /* 👈 consistent small size */
+  height: auto !important;
+  object-fit: cover !important;
+  border-radius: 10px;
+  margin: 0.75rem auto 1rem !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 📎 Links */
 a {
   color: #d35400;
   text-decoration: none;
@@ -113,26 +119,11 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Lists inside recipes */
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 0.5rem;
+/* 🧠 Text Elements */
+p {
+  margin: 1rem 0;
 }
 
-ul li {
-  margin-bottom: 0.4rem;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Code snippets */
 code {
   background: #fff2e6;
   color: #a63e00;
@@ -140,7 +131,14 @@ code {
   border-radius: 4px;
 }
 
-/* --- Dark Mode --- */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* 🌙 Dark Mode */
 @media (prefers-color-scheme: dark) {
   body {
     background: #12100f;
@@ -160,9 +158,10 @@ code {
     color: #ffb366;
   }
 
-  h3::before {
-    background: #1b1714;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  ul li {
+    background: #1e1a17;
+    border: 1px solid #3a2c20;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   }
 
   a {
