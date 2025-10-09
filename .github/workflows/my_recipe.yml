@@ -1,16 +1,15 @@
-name: 👨‍🍳 My Recipes Import
+name: 🥘 Weekly Recipe Scraper
 
 on:
-  push:
-    paths:
-      - "data/my_recipe_links.txt"
-  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 1"  # Every Monday at 12:00 UTC
+  workflow_dispatch:      # Allow manual runs from Actions tab
 
 permissions:
   contents: write
 
 jobs:
-  import_my_recipes:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,21 +26,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4
 
-      - name: 👨‍🍳 Run personal recipe importer
-        run: python scripts/add_my_recipe.py
+      - name: 🍳 Run weekly scraper
+        run: python scripts/scraper.py
+
+      - name: 🧹 Run layout fixer
+        run: python scripts/fix_recipe_layouts.py
 
       - name: 🕵️ Detect changes
         id: detect
         run: |
           git config user.name "Recipe Bot"
           git config user.email "actions@github.com"
-          git add recipes/my_recipes.md
+          git add recipes/weekly_recipes.md
           git diff --cached --quiet || echo "changed=true" >> $GITHUB_ENV
 
       - name: 🧾 Commit and push updates
         if: env.changed == 'true'
         run: |
           DATE=$(date +"%b %d, %Y")
-          COUNT=$(grep -o "<li>" recipes/my_recipes.md | wc -l)
-          git commit -m "👨‍🍳 Imported personal recipes — $COUNT total ($DATE)"
+          COUNT=$(grep -o "<li>" recipes/weekly_recipes.md | wc -l)
+          git commit -m "🍳 Weekly update — ${COUNT} recipes total (${DATE})"
           git push

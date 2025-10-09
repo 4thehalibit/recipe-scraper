@@ -37,10 +37,11 @@ jobs:
           git add recipes/weekly_recipes.md
           git diff --cached --quiet || echo "changed=true" >> $GITHUB_ENV
 
-      - name: 🧾 Commit and push updates
+       - name: 🧾 Commit and push updates
         if: env.changed == 'true'
         run: |
           DATE=$(date +"%b %d, %Y")
           COUNT=$(grep -o "<li>" recipes/weekly_recipes.md | wc -l)
-          git commit -m "🍳 Weekly update — $COUNT recipes total ($DATE)"
+          git commit -m "🍳 Weekly update — ${COUNT} recipes total (${DATE})"
           git push
+
