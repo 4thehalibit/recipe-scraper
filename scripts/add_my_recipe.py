@@ -12,13 +12,12 @@ HEADER = """<link rel="stylesheet" href="../assets/style.css?v=3">
 
 <div class="nav">
   <a href="https://4thehalibit.github.io/recipe-scraper/" class="nav-btn">🏠 Home</a>
-  <a href="https://4thehalibit.github.io/recipe-scraper/recipes/weekly_recipes.md" class="nav-btn">🥘 Weekly Recipes</a>
+  <a href="https://4thehalibit.github.io/recipe-scraper/recipes/weekly_recipes.html" class="nav-btn">🥘 Weekly Recipes</a>
   <a href="https://4thehalibit.github.io/recipe-scraper/recipes/my_recipes.html" class="nav-btn">👨‍🍳 My Recipes</a>
 </div>
 
-
 <div class="header">
-  <a href="../index.md" class="title">🍴 Recipe Scraper</a>
+  <a href="https://4thehalibit.github.io/recipe-scraper/" class="title">🍴 Recipe Scraper</a>
   <span class="subtitle">My Saved Favorites</span>
 </div>
 
@@ -29,6 +28,7 @@ Each time I paste links into `data/my_recipe_links.txt`, this list updates autom
 
 ---
 """
+
 
 
 def extract_tags(soup):

@@ -12,23 +12,23 @@ HEADER = """<link rel="stylesheet" href="../assets/style.css?v=3">
 
 <div class="nav">
   <a href="https://4thehalibit.github.io/recipe-scraper/" class="nav-btn">🏠 Home</a>
-  <a href="https://4thehalibit.github.io/recipe-scraper/recipes/weekly_recipes.md" class="nav-btn">🥘 Weekly Recipes</a>
+  <a href="https://4thehalibit.github.io/recipe-scraper/recipes/weekly_recipes.html" class="nav-btn">🥘 Weekly Recipes</a>
   <a href="https://4thehalibit.github.io/recipe-scraper/recipes/my_recipes.html" class="nav-btn">👨‍🍳 My Recipes</a>
 </div>
 
-
 <div class="header">
-  <a href="../index.md" class="title">🍴 Recipe Scraper</a>
-  <span class="subtitle">Weekly Auto-Generated Dinners</span>
+  <a href="https://4thehalibit.github.io/recipe-scraper/" class="title">🍴 Recipe Scraper</a>
+  <span class="subtitle">My Saved Favorites</span>
 </div>
 
-# 🥘 Weekly Recipes
+# 👨‍🍳 My Recipes
 
-These recipes are scraped automatically every Monday morning.
-Designed for 2–3 servings, they focus on simplicity and great flavor.
+Below are my saved favorites and personally added recipes.
+Each time I paste links into `data/my_recipe_links.txt`, this list updates automatically.
 
 ---
 """
+
 
 
 def clean_url(url):
