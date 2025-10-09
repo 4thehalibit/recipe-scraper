@@ -1,42 +1,50 @@
 name: Recipe Automation
 
 on:
+  # 🕒 Runs every Monday at 8 AM Central (13:00 UTC)
   schedule:
-    - cron: '0 13 * * 1'   # Mondays at 8 AM Central (13:00 UTC)
+    - cron: "0 13 * * 1"
+
+  # ⚡ Runs automatically when personal recipe links are updated
   push:
     paths:
-      - "my_recipe_links.txt"   # runs immediately when you change this file
-  workflow_dispatch:            # allow manual "Run workflow" button
+      - "data/my_recipe_links.txt"
+
+  # 🧠 Allows manual "Run workflow" button
+  workflow_dispatch:
 
 jobs:
   update-recipes:
+    name: Update Recipes
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r scripts/requirements.txt
 
-      # 👇 NEW step: auto-import your own links before scraping
+      # 🍳 Auto-import personal links before scraping
       - name: Import personal recipe links
-        run: python add_my_recipe.py
+        run: python scripts/add_my_recipe.py
 
-      # 👇 Weekly dinner scraper
+      # 🍝 Scrape 5 new easy dinner recipes
       - name: Run weekly dinner scraper
-        run: python scraper.py
+        run: python scripts/scraper.py
 
+      # 🧾 Commit and push any updates
       - name: Commit and push changes
         run: |
           git config user.name "Recipe Bot"
           git config user.email "bot@users.noreply.github.com"
-          git add weekly_recipes.md my_recipes.md
-          git commit -m "Auto update recipes" || echo "No changes to commit"
+          git add recipes/ data/my_recipe_links.txt || true
+          git commit -m "🍳 Auto update recipes" || echo "No changes to commit"
           git push
