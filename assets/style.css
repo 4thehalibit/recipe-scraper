@@ -1,8 +1,8 @@
 /* ---------------------------------------------------
- 🍳 Recipe Scraper — Final CSS (Usable, Polished Layout)
+ 🍳 Recipe Scraper — Final Usable Version (v3)
 --------------------------------------------------- */
 
-/* 🧱 Base Layout */
+/* Base Layout */
 body {
   font-family: "Inter", "Segoe UI", "Helvetica Neue", sans-serif;
   max-width: 1000px;
@@ -13,7 +13,7 @@ body {
   color: #2a1e12;
 }
 
-/* 🌅 Header Banner */
+/* Header */
 .header {
   background: linear-gradient(135deg, #ffb774, #ffcc94);
   color: #4b2600;
@@ -39,12 +39,10 @@ body {
   color: #5c3b1b;
 }
 
-/* 🧾 Headings */
+/* Headings */
 h1, h2, h3 {
   color: #d35400;
   font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
   border: none;
 }
 
@@ -55,49 +53,35 @@ h1 {
 
 h2 {
   font-size: 1.4rem;
+  text-align: center;
   border-bottom: 2px solid #ffd5b2;
   padding-bottom: 0.3em;
-  text-align: center;
 }
 
 h3 {
-  font-size: 1.05rem;
-  text-align: center;
-  color: #bf4800;
+  font-size: 1rem;
   margin-bottom: 0.4rem;
 }
 
-/* 📦 Recipe Grid Layout */
+/* Recipe Grid Layout */
 ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin: 1.5rem 0;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
-@media (min-width: 600px) {
-  ul {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 950px) {
-  ul {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* 🧁 Recipe Card */
+/* Recipe Cards */
 ul li {
   background: #fff5ec;
   border: 1px solid #ffddba;
   border-radius: 12px;
-  padding: 0.8rem 0.8rem 1.2rem;
+  padding: 1rem 0.5rem 1.2rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.15s ease, box-shadow 0.25s ease;
   text-align: center;
+  transition: transform 0.15s ease, box-shadow 0.25s ease;
 }
 
 ul li:hover {
@@ -105,11 +89,11 @@ ul li:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 🖼 Recipe Images */
+/* Recipe Thumbnails */
 img {
   display: block !important;
-  max-width: 120px !important;      /* ✅ true thumbnail size */
-  height: 120px !important;
+  max-width: 100px !important;
+  height: 100px !important;
   object-fit: cover !important;
   border-radius: 10px;
   margin: 0.5rem auto 0.8rem !important;
@@ -122,7 +106,7 @@ img:hover {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* 🔗 Links */
+/* Links */
 a {
   color: #d35400;
   text-decoration: none;
@@ -134,19 +118,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 🧠 Text Elements */
-p {
-  margin: 0.6rem 0 0.8rem;
-}
-
-code {
-  background: #fff2e6;
-  color: #a63e00;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-/* 🧾 Footer */
+/* Footer */
 footer {
   text-align: center;
   margin-top: 3rem;
@@ -154,7 +126,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* 🌙 Dark Mode */
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   body {
     background: #12100f;
@@ -182,11 +154,6 @@ footer {
 
   a {
     color: #ffb84d;
-  }
-
-  code {
-    background: #2a211c;
-    color: #ffd8a6;
   }
 
   footer {
