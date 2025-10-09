@@ -1,4 +1,4 @@
-/* --- 🍳 Modern Recipe Scraper Theme --- */
+/* --- 🍳 Modern Recipe Scraper Theme (Card Layout) --- */
 
 /* Base Layout */
 body {
@@ -19,6 +19,7 @@ body {
   padding: 1.5rem 1.8rem;
   margin-bottom: 2.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
 .header .title {
@@ -40,7 +41,7 @@ body {
 h1, h2, h3 {
   color: #d35400;
   font-weight: 700;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   margin-bottom: 0.75rem;
   border: none;
 }
@@ -56,6 +57,51 @@ h2 {
   padding-bottom: 0.3em;
 }
 
+/* --- Recipe Card Styling --- */
+h3 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  color: #bf4800;
+}
+
+/* Every recipe block = auto card */
+h3 + img {
+  display: block;
+  max-width: 260px;
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+  margin: 0 auto 0.8rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+h3, h3 + img, h3 + img + ul, h3 + img + p {
+  transition: all 0.3s ease;
+}
+
+/* Recipe Card Container */
+h3 {
+  position: relative;
+}
+
+h3::before {
+  content: "";
+  display: block;
+  background: #fff5ec;
+  border-radius: 10px;
+  position: absolute;
+  top: -0.8rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+  z-index: -1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Links inside cards */
 a {
   color: #d35400;
   text-decoration: none;
@@ -67,57 +113,15 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Recipe Cards */
+/* Lists inside recipes */
 ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
+  margin-top: 0.5rem;
 }
 
 ul li {
-  background: #fff5ec;
-  border: 1px solid #ffddba;
-  border-radius: 10px;
-  margin: 1rem 0;
-  padding: 0.9rem 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-ul li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-/* Paragraphs */
-p {
-  margin: 1.2rem 0;
-}
-
-/* --- Recipe Images --- */
-img {
-  display: block;
-  max-width: 280px;           /* sets a smaller natural size */
-  width: 90%;                 /* scales a bit on mobile */
-  height: auto;
-  border-radius: 10px;
-  margin: 0.75rem auto 1.5rem; /* centers images */
-  object-fit: cover;           /* crops oversized images cleanly */
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Code Snippets */
-code {
-  background: #fff2e6;
-  color: #a63e00;
-  padding: 2px 6px;
-  border-radius: 4px;
+  margin-bottom: 0.4rem;
 }
 
 /* Footer */
@@ -128,7 +132,15 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Dark Mode */
+/* Code snippets */
+code {
+  background: #fff2e6;
+  color: #a63e00;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* --- Dark Mode --- */
 @media (prefers-color-scheme: dark) {
   body {
     background: #12100f;
@@ -148,10 +160,9 @@ footer {
     color: #ffb366;
   }
 
-  ul li {
-    background: #1e1a17;
-    border: 1px solid #3a2c20;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  h3::before {
+    background: #1b1714;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
   }
 
   a {
@@ -161,5 +172,9 @@ footer {
   code {
     background: #2a211c;
     color: #ffd8a6;
+  }
+
+  footer {
+    color: #a38d7c;
   }
 }
