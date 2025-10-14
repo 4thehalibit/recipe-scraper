@@ -31,6 +31,12 @@ Each time I paste links into `data/my_recipe_links.txt`, this list updates autom
   <p><a href="https://www.allrecipes.com/15-minute-chili-crisp-noodles-recipe-11764811">View Recipe</a></p>
   <p><strong>Tags:</strong> Dinner, Favorite</p>
 </li>
+<li>
+  <h3>Cauliflower Beef Taco Skillet</h3>
+  <img src="https://wholesomemadeeasy.com/wp-content/uploads/2023/04/Cauliflower-Beef-Taco-Skillet-wide-39.jpg" alt="Cauliflower Beef Taco Skillet">
+  <p><a href="https://wholesomemadeeasy.com/cauliflower-beef-taco-skillet/">View Recipe</a></p>
+  <p><strong>Tags:</strong> Dinner, Favorite</p>
+</li>
 </ul>
 
 
