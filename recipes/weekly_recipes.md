@@ -49,6 +49,24 @@ Each time I paste links into `data/my_recipe_links.txt`, this list updates autom
   <p><a href="https://www.allrecipes.com/recipe/14044/quick-and-easy-stuffed-peppers">View Recipe</a></p>
   <p><strong>Tags:</strong> Dinner, Easy</p>
 </li>
+<li>
+  <h3>Easy Shrimp Dinner</h3>
+  <img src="https://www.allrecipes.com/thmb/1RP-HzOWYvqb7SnfQYQK-rtdhpI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/7577615-c3c6182e4938424e82e9f98a7866d410.jpg" alt="Easy Shrimp Dinner">
+  <p><a href="https://www.allrecipes.com/recipe/20450/easy-shrimp-dinner">View Recipe</a></p>
+  <p><strong>Tags:</strong> Dinner, Easy</p>
+</li>
+<li>
+  <h3>Easy Chinese Corn Soup</h3>
+  <img src="https://www.allrecipes.com/thmb/fdyN8cykSCcVcrw7Y4Hk5Fsrsz0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/1978336-easy-chinese-corn-soup-Ariel-Burn-4x3-1-0bc8b4a0e67f47d0a2ded78323250904.jpg" alt="Easy Chinese Corn Soup">
+  <p><a href="https://www.allrecipes.com/recipe/29704/easy-chinese-corn-soup">View Recipe</a></p>
+  <p><strong>Tags:</strong> Dinner, Easy</p>
+</li>
+<li>
+  <h3>Easy Baked Chicken Thighs</h3>
+  <img src="https://www.allrecipes.com/thmb/1ELCrAUhqYBeXt4ANMfDdjvUEnU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/235153easy-baked-chicken-thighsfabeverday2x1-d6df074f83744ecb801566d390c2d9e1.jpg" alt="Easy Baked Chicken Thighs">
+  <p><a href="https://www.allrecipes.com/recipe/235153/easy-baked-chicken-thighs">View Recipe</a></p>
+  <p><strong>Tags:</strong> Dinner, Easy</p>
+</li>
 </ul>
 
 
