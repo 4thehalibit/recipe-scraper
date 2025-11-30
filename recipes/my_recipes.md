@@ -37,6 +37,12 @@ Each time I paste links into `data/my_recipe_links.txt`, this list updates autom
   <p><a href="https://wholesomemadeeasy.com/cauliflower-beef-taco-skillet/">View Recipe</a></p>
   <p><strong>Tags:</strong> Dinner, Favorite</p>
 </li>
+<li>
+  <h3>Cajun Garlic Chicken Bowties in Spicy Provolone Mozzarella Sauce</h3>
+  <img src="https://tastysimply.com/wp-content/uploads/2025/11/Cajun-Garlic-Chicken-Bowties-in-Spicy-Provolone-Mozzarella-Sauce-min.png" alt="Cajun Garlic Chicken Bowties in Spicy Provolone Mozzarella Sauce">
+  <p><a href="https://tastysimply.com/cajun-garlic-chicken-bowties/?fbclid=IwdGRleAOZpQhleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEeN0ef43DjHB-w9f1F_4NR297aswJOeHVyzlciYhdcRlDQH8NAmZ-dbUGS93E_aem_RQNy5HnDz5u0hgHw9uSlyA">View Recipe</a></p>
+  <p><strong>Tags:</strong> Dinner, Favorite</p>
+</li>
 </ul>
 
 
